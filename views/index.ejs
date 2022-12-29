@@ -8,11 +8,31 @@
 <body>
         <div class="wrapper">
             <form action="/" method="post">
-            <input name="keyword" class="input-keyword" placeholder="keyword here" type='text' />
+            <input name="keyword" class="input-keyword" id="searchbox" placeholder="keyword here" type='text' />
+            <div id="output"></div>
             <button class="Submit" >Submit keyword</button>
             </form>    
         </div>
 
     
 </body>
+<script>
+    function myAmazingFunction(data){
+        let results=data[1].map(rawResults=>{
+            let match=rawResults[0].match(/<b>(.+)<\/b>/)
+                if (match) return match[1]
+        })
+                document.getElementById('output').innerHTML = results;
+    }
+    var myScript = '';
+        document.getElementById('searchbox').onkeyup = function(){
+            if(myScript!==''){
+        document.body.removeChild(myScript);
+    }
+        var stuff_in_text_box = document.getElementById('searchbox').value;
+            myScript = document.createElement('script');
+                myScript.src = `https://www.google.com/complete/search?client=hp&hl=en&sugexp=msedr&gs_rn=62&gs_ri=hp&cp=1&gs_id=9c&q=${stuff_in_text_box}&xhr=t&callback=hello&callback=myAmazingFunction`;
+            document.body.appendChild(myScript);
+    };
+    </script>
 </html>
