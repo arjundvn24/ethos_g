@@ -1,11 +1,20 @@
-var mongoUrl =
-    "mongodb+srv://Hal:hCho1qKBfVlVvWIU@cluster0.aws60.mongodb.net/";
+var mongoUrl = "mongodb+srv://Hal:hCho1qKBfVlVvWIU@cluster0.aws60.mongodb.net/ethos_g";
 
-var MongoClient = require('mongodb').MongoClient;
+const mongoose = require("mongoose");
 
-MongoClient.connect(mongoUrl, function(err, db) {
-  if (err) throw err;
-  console.log("Database connected!");
-//   db.db('ethos_g').insert
-  db.close();
-});
+const connectToDb = async () => {
+  mongoose.connect(
+    mongoUrl,
+    function (err, db) {
+      if (err) throw err;
+      console.log("Database connected!");
+    }
+  );
+};
+const insertData = async (data) => {
+
+};
+module.exports={
+  connectToDb,
+  insertData
+}

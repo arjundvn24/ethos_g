@@ -1,20 +1,40 @@
 const mongoose = require("mongoose");
 
-const ArticleSchema = new Schema({
-    keyword: {
+const ArticleSchema = new mongoose.Schema({
+  keyword:{
+    type:String,
+    required:true
+  },
+    title: {
+      type: String,
+      default: undefined,
+    },
+    link: {
       type: String,
       required: true,
     },
-    url: {
+    pubDate: {
       type: String,
-      required:true,
+      required: true,
     },
-    paragraph:{
-        type: String,
-        required:true,  
-    }
-  });
+    content: {
+      type: String,
+      required: true,
+    },
+    contentSnippet: {
+      type: String,
+      required: true,
+    },
+    guid: {
+      type: String,
+      required: true,
+    },
+    isoDate: {
+      type: String,
+      required: true,
+    },
+});
 
 const Article = mongoose.model("Article", ArticleSchema);
 
-export default Article
+module.exports= Article;

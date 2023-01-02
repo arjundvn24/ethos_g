@@ -1,24 +1,45 @@
 var keyword;
+
 const express = require("express");
 const app = express();
-const google = require('googlethis');
+const news = require('gnews');
+const Article=require('../models/Article')
+const gs=require('../gs')
 
 const postKeyword = async (req, res) => {
     keyword = req.body.keyword;
     console.log(keyword);
-    const SERPresults = await processSERP(keyword)
-    console.log(SERPresults);
+    var SERPresults = await news.search(keyword, {n : 5});
+    SERPresults.forEach(rawData=>{
+        // console.log(rawData);
+        rawData=new Article({
+            keyword:keyword,
+            title:rawData.title,
+            link:rawData.link,
+            pubDate:rawData.pubDate,
+            content:rawData.content,
+            contentSnippet:rawData.contentSnippet,
+            guid:rawData.guid,
+            isoDate:rawData.isoDate
+        })
+        rawData.save(function(err,result){
+            if (err){
+                console.log(err);
+            }
+            else{
+                console.log("Inserted with ID",result._id)
+            }
+        })
+    })    
+    renderSearchResults(SERPresults)
+
 };
 
-const processSERP = async (keyword) => {
-    var res = await google.search(keyword, {
-        page: 0,
-        safe: false,
-        additional_params: {
-            hl: 'en'
-        }
-    });
-    return res.results
+const renderSearchResults=async (SERPresults)=>{
+    SERPresults.forEach(async rawData=>{
+        let articleData=await gs.processArticles(rawData.link,keyword)
+    })
+    
 }
 
 module.exports = {
