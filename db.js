@@ -11,10 +11,6 @@ const connectToDb = async () => {
     }
   );
 };
-const insertData = async (data) => {
-
-};
 module.exports={
   connectToDb,
-  insertData
 }
