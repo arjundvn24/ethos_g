@@ -2,17 +2,18 @@ var keyword;
 const Article_Newspaper = require("newspaperjs").Article;
 const express = require("express");
 const processedArticle=require('../models/processedArticle')
-const app = express();
+const fs = require('fs');
 const news = require('gnews');
 const Article=require('../models/Article')
 // const gs=require('../gs')
 
 const postKeyword = async (req, res) => {
+  let start = performance.now();
     keyword = req.body.keyword;
     console.log(keyword);
-    var SERPresults = await news.search(keyword, {n : 5});
+    var SERPresults = await news.search(keyword, {n : 10});
     SERPresults.forEach(rawData=>{
-        // console.log(rawData);
+        console.log(rawData);
         rawData=new Article({
             keyword:keyword,
             title:rawData.title,
@@ -33,7 +34,11 @@ const postKeyword = async (req, res) => {
         })
     })    
     let result=await renderSearchResults(SERPresults)
+    fs.writeFileSync('temp.json',JSON.stringify(result))
     res.send(result)
+    console.log(SERPresults)
+    let timeTaken = performance.now() - start;
+    console.log("Total time taken : " + timeTaken/1000 + " milliseconds");
 };
 
 const renderSearchResults=async (SERPresults)=>{
@@ -43,6 +48,7 @@ const renderSearchResults=async (SERPresults)=>{
             rawData.link
           )
             .then((result) => {
+                console.log('Done');
               result=new processedArticle({
                 keyword:keyword,
                 title:result.title,

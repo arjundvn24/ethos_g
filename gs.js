@@ -1,35 +1,13 @@
 const Article = require("newspaperjs").Article;
-const processedArticle=require('./models/processedArticle')
-var resultSearch=null
 
-const processArticles = async (url,keyword) => {
-  await Article(
-    url
+   Article(
+    'https://www.glamour.com/story/camila-cabello-dating-austin-kevitch'
   )
     .then((result) => {
-      result=new processedArticle({
-        keyword:keyword,
-        title:result.title,
-        text:result.text,
-        topImage:result.topImage,
-        date:result.date,
-        author:result.author,
-        description:result.description,
-        keywords:result.keywords
-      })
-      result.save(function(err,result){
-        if (err){
-            console.log(err);
-        }
-        else{
-            console.log("Processed Article Inserted with ID",result._id)
-        }
-    })
+      console.log(result);
+
     return result
     })
     .catch((reason) => {
       console.log(reason);
     });
-};
-
-module.exports = processArticles
