@@ -101,5 +101,5 @@ for i in summary:
     lis.append(j.get('summary_text'))
 df2["summary"]=lis
 df2= df2.loc[:,df2.columns!="text"]
-df2.to_json('file1.json', orient = 'split', compression = 'infer')
+df2.to_json('file1.json', orient = 'records', compression = 'infer')
 
