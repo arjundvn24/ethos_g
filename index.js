@@ -7,8 +7,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/',router)
 app.set("view engine", "ejs");
 
-const port = 3000;
-
+const port = 8080;
 app.listen(port, () =>{ 
     // db.connectToDb()
     console.log(`Example app listening at ${port}`)
