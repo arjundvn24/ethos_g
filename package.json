@@ -7,9 +7,12 @@
     "gnews": "^1.0.3",
     "google-news-scraper": "^1.0.9",
     "googlethis": "^1.7.0",
+    "jquery": "^3.6.3",
+    "jsdom": "^20.0.3",
     "mongodb": "^4.13.0",
     "mongoose": "^6.8.2",
     "newspaperjs": "^1.0.8",
-    "node-fetch": "^3.0.0"
+    "node-fetch": "^3.0.0",
+    "react": "^18.2.0"
   }
 }

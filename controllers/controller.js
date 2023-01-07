@@ -1,44 +1,16 @@
 var keyword;
+
 const Article_Newspaper = require("newspaperjs").Article;
 const express = require("express");
 const processedArticle=require('../models/processedArticle')
 const fs = require('fs');
 const news = require('gnews');
 const Article=require('../models/Article')
-// const gs=require('../gs')
 
 const postKeyword = async (req, res) => {
-  let start = performance.now();
     keyword = req.body.keyword;
     console.log(keyword);
-    var SERPresults = await news.search(keyword, {n : 10});
-    SERPresults.forEach(rawData=>{
-        console.log(rawData);
-        rawData=new Article({
-            keyword:keyword,
-            title:rawData.title,
-            link:rawData.link,
-            pubDate:rawData.pubDate,
-            content:rawData.content,
-            contentSnippet:rawData.contentSnippet,
-            guid:rawData.guid,
-            isoDate:rawData.isoDate
-        })
-        rawData.save(function(err,result){
-            if (err){
-                console.log(err);
-            }
-            else{
-                console.log("Inserted with ID",result._id)
-            }
-        })
-    })    
-    let result=await renderSearchResults(SERPresults)
-    fs.writeFileSync('temp.json',JSON.stringify(result))
-    res.send(result)
-    console.log(SERPresults)
-    let timeTaken = performance.now() - start;
-    console.log("Total time taken : " + timeTaken/1000 + " milliseconds");
+    res.redirect('/res')
 };
 
 const renderSearchResults=async (SERPresults)=>{
@@ -49,35 +21,67 @@ const renderSearchResults=async (SERPresults)=>{
           )
             .then((result) => {
                 console.log('Done');
-              result=new processedArticle({
-                keyword:keyword,
-                title:result.title,
-                text:result.text,
-                topImage:result.topImage,
-                date:result.date,
-                author:result.author,
-                description:result.description,
-                keywords:result.keywords
-              })
+            //   result=new processedArticle({
+            //     keyword:keyword,
+            //     title:result.title,
+            //     text:result.text,
+            //     topImage:result.topImage,
+            //     date:result.date,
+            //     author:result.author,
+            //     description:result.description,
+            //     keywords:result.keywords
+            //   })
               cachedRes.push(result)
-              result.save(function(err,result){
-                if (err){
-                    console.log(err);
-                }
-                else{
-                    console.log("Title:",result.title)
-                }
-            })
+            //   result.save(function(err,result){
+            //     if (err){
+            //         console.log(err);
+            //     }
+            //     else{
+            //         console.log("Title:",result.title)
+            //     }
+            // })
             })
             .catch((reason) => {
               console.log(reason);
             });
         
     }
-    
     return cachedRes
 }
 
+const resultShow=async (req,res)=>{
+  let start = performance.now();
+  var SERPresults = await news.search(keyword, {n : 25});
+  SERPresults.forEach(rawData=>{
+    console.log(rawData);
+    // rawData=new Article({
+      //     keyword:keyword,
+      //     title:rawData.title,
+      //     link:rawData.link,
+      //     pubDate:rawData.pubDate,
+      //     content:rawData.content,
+      //     contentSnippet:rawData.contentSnippet,
+      //     guid:rawData.guid,
+      //     isoDate:rawData.isoDate
+      // })
+      // rawData.save(function(err,result){
+        //     if (err){
+          //         console.log(err);
+          //     }
+          //     else{
+            //         console.log("Inserted with ID",result._id)
+      //     }
+      // })
+    })    
+    timeTaken = performance.now() - start;
+    console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
+    let result=await renderSearchResults(SERPresults)
+    fs.writeFileSync('temp.json',JSON.stringify(result))
+    timeTaken = performance.now() - start;
+    console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
+    res.render('res',{"searchRes":result})
+}
 module.exports = {
-    postKeyword
+    postKeyword,
+    resultShow,
 }

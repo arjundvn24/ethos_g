@@ -8,7 +8,16 @@
 </head>
 <body>
         <div class="wrapper">  
+            <p>
+                THIS IS result
+            </p>
             <div class="text-area">
+                
+                <% for(var i=0; i < searchRes.length; i++) { %>
+                    <tr>
+                    <%= searchRes[i].title %>
+                    </tr>
+                    <% } %>
             </div>
         </div> 
 

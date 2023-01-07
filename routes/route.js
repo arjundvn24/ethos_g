@@ -6,8 +6,6 @@ router.get("/", (_,res)=>res.render('index.ejs'));
 
 router.post("/", controller.postKeyword);
 
-router.get("/info", (req, res) => {
-    res.send()
-});
+router.get("/res", controller.resultShow);
 
 module.exports = router;

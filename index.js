@@ -10,6 +10,6 @@ app.set("view engine", "ejs");
 const port = 3000;
 
 app.listen(port, () =>{ 
-    db.connectToDb()
+    // db.connectToDb()
     console.log(`Example app listening at ${port}`)
 });
