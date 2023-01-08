@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1Oq-7rHYAwcg2_pwcLAVH4kLZ2I261UQx
 """
 
+import os
 import pandas as pd
 import pandas as pd
 import numpy as np
@@ -28,10 +29,10 @@ nltk.download('omw-1.4')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
-from transformers import pipeline
+# from transformers import pipeline
 
 sia = SentimentIntensityAnalyzer()
-df = pd.read_json(r'temp.json')
+df = pd.read_json('D:/Desktop Contents/ethos_arjun\ethos_g/ethos_g/temp.json')
 df.to_csv(r'json_output.csv',index=None)
 df = pd.read_csv('json_output.csv')
 person = df['keyword'][0]
@@ -100,4 +101,7 @@ df2=vaders.copy()
 #     lis.append(j.get('summary_text'))
 # df2["summary"]=lis
 df2= df2.loc[:,df2.columns!="text"]
-df2.to_json('file1.json', orient = 'records', compression = 'infer')
+print("Hi from f")
+if os.path.exists("D:/Desktop Contents/ethos_arjun/ethos_g/ethos_g/search_page_al/src/file1.json"):
+  os.remove("D:/Desktop Contents/ethos_arjun/ethos_g/ethos_g/search_page_al/src/file1.json")
+  df2.to_json('D:/Desktop Contents/ethos_arjun/ethos_g/ethos_g/search_page_al/src/file1.json', orient = 'records', compression = 'infer')

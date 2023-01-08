@@ -2,11 +2,9 @@ var keyword;
 const Article_Newspaper = require("newspaperjs").Article;
 const express = require("express");
 const processedArticle=require('../models/processedArticle')
-const fsPromises = require('fs').promises;
+const fsPromises = require('fs').promises
 const news = require('gnews');
 const Article=require('../models/Article')
-const {PythonShell} =require('python-shell');
-const f=require('../f')
 const postKeyword = async (req, res) => {
     keyword = req.body.keyword;
     console.log(keyword);
@@ -51,7 +49,7 @@ const renderSearchResults=async (SERPresults)=>{
 
 const resultShow=async (req,res)=>{
   let start = performance.now();
-  var SERPresults = await news.search(keyword, {n : 3});
+  var SERPresults = await news.search(keyword, {n : 10});
   SERPresults.forEach(rawData=>{
     console.log(rawData);
     // rawData=new Article({
@@ -76,17 +74,12 @@ const resultShow=async (req,res)=>{
     timeTaken = performance.now() - start;
     console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
     let result=await renderSearchResults(SERPresults)
-    fsPromises.writeFile('temp.json', JSON.stringify(result))
-  .then(() => {
-   console.log("JSON SAVE");
-   
-  })
-  .catch(er => {
-    console.log(er);
-  });
+    fsPromises.writeFile('temp.json', JSON.stringify(result)).then(()=>{
+      console.log("JSON done")
+      res.redirect('/readPython')
+    })
     timeTaken = performance.now() - start;
     console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
-    res.send({"searchRes":result})
 }
 module.exports = {
     postKeyword,
