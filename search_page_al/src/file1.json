@@ -1,1 +1,101 @@
-[{"index":0,"neg":0.027,"neu":0.87,"pos":0.103,"compound":0.9881,"title":"This Billionaire Gained More Wealth Than Any Other Billionaire In 2022","date":"2023-01-06","author":null,"label":"Positive"},{"index":1,"neg":0.054,"neu":0.859,"pos":0.087,"compound":0.9994,"title":"How political will often favors a coal billionaire and his dirty fossil fuel","date":"2022-12-09","author":null,"label":"Positive"},{"index":2,"neg":0.037,"neu":0.867,"pos":0.096,"compound":0.9959,"title":"Asia\u2019s richest man Gautam Adani reveals global media ambitions","date":"2022-11-25","author":null,"label":"Positive"},{"index":3,"neg":0.019,"neu":0.895,"pos":0.086,"compound":0.9848,"title":"Indian Billionaire Gautam Adani to Control 65% of News Service NDTV as Founders Sell Share","date":"2022-12-23","author":"Naman Ramachandran","label":"Positive"},{"index":4,"neg":0.043,"neu":0.906,"pos":0.051,"compound":0.6369,"title":"Indian billionaire Adani's firm wins bid to develop vast Mumbai slum | CNN Business","date":"2022-11-30","author":"Reuters","label":"Positive"},{"index":5,"neg":0.02,"neu":0.899,"pos":0.081,"compound":0.9944,"title":"India\u2019s Gautam Adani targets sovereign funds in capital raising spree","date":"2022-12-07","author":null,"label":"Positive"},{"index":6,"neg":0.034,"neu":0.847,"pos":0.119,"compound":0.9917,"title":"Meet the Indian industrialist worth almost as much as Elon Musk after getting $42 billion richer this year","date":"2022-12-29","author":"Grace Dean","label":"Positive"}]
+[
+    {
+        "index": 0,
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0,
+        "title": "Analysis: Dana Bash reacts to McCarthy thanking Trump for speaker role | CNN Politics",
+        "date": "2023-01-07",
+        "author": null,
+        "label": "Negative"
+    },
+    {
+        "index": 1,
+        "neg": 0.128,
+        "neu": 0.753,
+        "pos": 0.12,
+        "compound": -0.6782,
+        "title": "Trump\u2019s Troubles Mount as Special Counsel Gets New 2020 Evidence",
+        "date": "2023-01-05",
+        "author": null,
+        "label": "Negative"
+    },
+    {
+        "index": 2,
+        "neg": 0.101,
+        "neu": 0.845,
+        "pos": 0.055,
+        "compound": -0.9745,
+        "title": "Manhattan judge wants Trump to stop calling NY attorney general's $250 million fraud case a witch hunt",
+        "date": "2023-01-06",
+        "author": "Laura Italiano",
+        "label": "Negative"
+    },
+    {
+        "index": 3,
+        "neg": 0.059,
+        "neu": 0.822,
+        "pos": 0.118,
+        "compound": 0.9984,
+        "title": "How to Make Trump and the Wealthy Pay Their Taxes",
+        "date": "2023-01-06",
+        "author": "Cond\u00e9 Nast",
+        "label": "Positive"
+    },
+    {
+        "index": 4,
+        "neg": 0.066,
+        "neu": 0.806,
+        "pos": 0.128,
+        "compound": 0.9787,
+        "title": "Joe Rogan said 'the morons had a king' with Donald Trump during a podcast episode",
+        "date": "2023-01-07",
+        "author": "Alia Shoaib",
+        "label": "Positive"
+    },
+    {
+        "index": 5,
+        "neg": 0.054,
+        "neu": 0.881,
+        "pos": 0.064,
+        "compound": 0.0258,
+        "title": "Judge Rules for Justice Dept. in Dispute With Trump Over Documents Search",
+        "date": "2023-01-05",
+        "author": null,
+        "label": "Positive"
+    },
+    {
+        "index": 6,
+        "neg": 0.1,
+        "neu": 0.836,
+        "pos": 0.064,
+        "compound": -0.9982,
+        "title": "Two years after US Capitol attack, investigation into Trump and insurrection enters new phase | CNN Politics",
+        "date": "2023-01-06",
+        "author": "Zachary Cohen,Katelyn Polantz,Tierney Sneed,Sara Murray,Paula Reid",
+        "label": "Negative"
+    },
+    {
+        "index": 7,
+        "neg": 0.108,
+        "neu": 0.782,
+        "pos": 0.11,
+        "compound": -0.4356,
+        "title": "Trump Is Already Facing a Lawsuit to Stop His 2024 Campaign",
+        "date": "2023-01-06",
+        "author": null,
+        "label": "Negative"
+    },
+    {
+        "index": 8,
+        "neg": 0.057,
+        "neu": 0.829,
+        "pos": 0.114,
+        "compound": 0.9921,
+        "title": "\u201cHe Was All In\u201d: Donald Trump\u2019s Influence Over Congress Remains A Force To Be Reckoned With, Even If Waning",
+        "date": "2023-01-07",
+        "author": "Cond\u00e9 Nast",
+        "label": "Positive"
+    }
+]

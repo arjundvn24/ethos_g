@@ -30,7 +30,7 @@ app.get("/readPython", (request, response) => {
    // in close event we are sure that stream from child process is closed
    python.on('exit', (code) => {
    console.log(`child process exited with code ${code}, ${dataToSend}`);
-  }); 
+  });
 });
 app.listen(port, () =>{ 
     // db.connectToDb()
