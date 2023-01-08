@@ -7,7 +7,8 @@ class Create extends Component {
     super(props);
 
     this.state = {
-      keyword:''
+      keyword:'',
+      n:''
     };
   }
 
@@ -20,19 +21,21 @@ class Create extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { keyword } = this.state;
+    const { keyword,n} = this.state;
 
     const book = {
-      keyword
+      keyword,
+      n
     };
 
     axios
       .post('http://localhost:8080/', book)
-      .then(() => console.log('Book Created'),   
+      .then(() => console.log('Article Search Created'),   
       )
       .catch(err => {
         console.error(err);
       });
+      alert("Calculating")
   };
  
   
@@ -49,17 +52,17 @@ class Create extends Component {
                 type="text"
                 name="keyword"
                 id="search"
-                placeholder="Search for something"
+                placeholder="Enter keyword"
                 onChange={this.handleInputChange}
               />
-              {/* <form autoComplete="off" onSubmit={this.handleSubmit}>
-      <input type="text" name="search" id="search" value={text}
-      onChange={(e)=>setText(e.target.value)}
-      placeholder="Search for something" /> */}
-      {/* <button>Search</button> */}
-     {/* </form> */}
-            
-           
+              <input
+                type="number"
+                name="n"
+                placeholder="Number of articles"
+                onChange={this.handleInputChange}
+                width="1px"
+              />
+        
               <button className="btn btn-success" type="submit">
                 <img src="https://cdn4.iconfinder.com/data/icons/materia-tools-vol-1/24/023_042_023_zoom_search_lense_tool-512.png"
                 width="50px"
@@ -70,17 +73,6 @@ class Create extends Component {
             
           </form>
       </div>
-      <div className="narticle">
-          <form onSubmit={this.handleSubmit} >
-              <input
-                type="number"
-                name="keyword"
-                placeholder="Number of articles"
-                onChange={this.handleInputChange}
-                width="1px"
-              />
-              </form>
-              </div>
       </div>
     );
   }

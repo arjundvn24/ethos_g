@@ -13,16 +13,14 @@ import FAQ from "./scenes/faq";
 import About from "./scenes/about"
 import Geography from "./scenes/geography";
 import Calendar from "./scenes/calendar/calendar";
-import Sidebar from './scenes/global/Sidebar';
-import Topbar from './scenes/global/Topbar';
 class App extends Component {
 render() {
 	return (
 	<Router>
 		<Routes>
-				<Route exact path='/' element={< Create />}></Route>
-				<Route exact path='/dashboard' element={< Dash />}></Route>
-				<Route path="/about" element={<About/>}></Route>
+		<Route exact path='/' element={< Create />}></Route>
+		<Route exact path='/dashboard' element={< Dash />}></Route>
+		<Route path="/about" element={<About/>}></Route>
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />

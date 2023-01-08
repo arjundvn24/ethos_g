@@ -1,4 +1,4 @@
-var keyword;
+var keyword,n;
 const stripHtml = require("string-strip-html");
 const { extract,addTransformations } =require('@extractus/article-extractor')
 const express = require("express");
@@ -29,7 +29,9 @@ const transformationObj={
 addTransformations(transformationObj)
 const postKeyword = async (req, res) => {
     keyword = req.body.keyword;
+    n = req.body.n;
     console.log(keyword);
+    console.log(n);
     res.redirect('/res')
 };
 
@@ -73,9 +75,8 @@ const renderSearchResults=async (SERPresults)=>{
 
 const resultShow=async (req,res)=>{
   let start = performance.now();
-  var SERPresults = await news.search(keyword, {n : 10});
+  var SERPresults = await news.search(keyword, {n : n});
   
-  console.log(SERPresults.length);
   // SERPresults.forEach(rawData=>{
     // rawData=new Article({
       //     keyword:keyword,
@@ -97,14 +98,14 @@ const resultShow=async (req,res)=>{
       // })
     // })    
     timeTaken = performance.now() - start;
-    console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
+    console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " seconds");
     let result=await renderSearchResults(SERPresults)
     fsPromises.writeFile('temp.json', JSON.stringify(result)).then(()=>{
       console.log("JSON done")
       res.redirect('/readPython')
     })
     timeTaken = performance.now() - start;
-    console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
+    console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " seconds");
 }
 module.exports = {
     postKeyword,
