@@ -73,19 +73,17 @@ const Sidebar = () => {
               color: colors.grey[100],
             }}
           >
-            {!isCollapsed && (
+            {isCollapsed && (
               <Box
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h1" color={colors.grey[100]}>
-                  ethos
-                </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                 <h1>ethos</h1>
+                {/* <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
-                </IconButton>
+                </IconButton> */}
               </Box>
             )}
           </MenuItem>
@@ -119,7 +117,7 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
-              title="Dashboard"
+              title="Home"
               to="/"
               icon={<HomeOutlinedIcon />}
               selected={selected}
