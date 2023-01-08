@@ -69,35 +69,35 @@ for i in range(vaders.shape[0]):
 vaders['label']=label
 df2=vaders.copy()
 
-summary=[0]*df2.shape[0]
-for j in range(df2.shape[0]):
-  ps = PorterStemmer()
-  text=df2['text'][j]
-  lemmatizer = WordNetLemmatizer()
-  sentences = nltk.sent_tokenize(text)
-  key = nltk.word_tokenize(person)
-  corpus = []
-  key
-  for i in range(len(sentences)):
-      review = re.sub('[^a-zA-Z]', ' ', sentences[i])
-      review = review.lower()
-      review = review.split()
-      # review = [lemmatizer.lemmatize(word) for word in review if word not in set(stopwords.words('english'))]
-      review = ' '.join(review)
-      for k in key:
-        if(k in review):
-          corpus.append(review)
+# summary=[0]*df2.shape[0]
+# for j in range(df2.shape[0]):
+#   ps = PorterStemmer()
+#   text=df2['text'][j]
+#   lemmatizer = WordNetLemmatizer()
+#   sentences = nltk.sent_tokenize(text)
+#   key = nltk.word_tokenize(person)
+#   corpus = []
+#   key
+#   for i in range(len(sentences)):
+#       review = re.sub('[^a-zA-Z]', ' ', sentences[i])
+#       review = review.lower()
+#       review = review.split()
+#       # review = [lemmatizer.lemmatize(word) for word in review if word not in set(stopwords.words('english'))]
+#       review = ' '.join(review)
+#       for k in key:
+#         if(k in review):
+#           corpus.append(review)
 
-  corpus=' '.join(corpus)
-  corpus=corpus[len(corpus)-1024:len(corpus)-1]
-  summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-  summary[j] = summarizer(corpus,max_length=30,min_length=10,do_sample=False)
+#   corpus=' '.join(corpus)
+#   corpus=corpus[len(corpus)-1024:len(corpus)-1]
+#   summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+#   summary[j] = summarizer(corpus,max_length=30,min_length=10,do_sample=False)
 
 
-lis=[]
-for i in summary:
-  for j in i:
-    lis.append(j.get('summary_text'))
-df2["summary"]=lis
+# lis=[]
+# for i in summary:
+#   for j in i:
+#     lis.append(j.get('summary_text'))
+# df2["summary"]=lis
 df2= df2.loc[:,df2.columns!="text"]
-df2.to_json('./search_page_al/src/file1.json', orient = 'records', compression = 'infer')
+df2.to_json('file1.json', orient = 'records', compression = 'infer')

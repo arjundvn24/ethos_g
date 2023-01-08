@@ -1,67 +1,19 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-class Create extends Component {
-  constructor(props) {
-    super(props);
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import MinDash from '../src/components/minDashboard';
+import Create from '../src/components/Create';
 
-    this.state = {
-      keyword:''
-    };
-  }
-
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    const { keyword } = this.state;
-
-    const book = {
-      keyword
-    };
-
-    axios
-      .post('http://localhost:8080/', book)
-      .then(() => console.log('Book Created'),   
-      )
-      .catch(err => {
-        console.error(err);
-      });
-  };
- 
-  
-  render() {
-    return (
-      <div>
-
-          <form onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="keyword"
-                id="search"
-                placeholder="Search for something"
-                onChange={this.handleInputChange}
-              />
-              {/* <form autoComplete="off" onSubmit={this.handleSubmit}>
-      <input type="text" name="search" id="search" value={text}
-      onChange={(e)=>setText(e.target.value)}
-      placeholder="Search for something" /> */}
-      {/* <button>Search</button> */}
-     {/* </form> */}
-            
-           
-              <button className="btn btn-success" type="submit">
-                Create
-              </button>
-            
-          </form>
-      </div>
-    );
-  }
+class App extends Component {
+render() {
+	return (
+	<Router>
+		<Routes>
+				<Route exact path='/' element={< Create />}></Route>
+				<Route exact path='/mindash' element={< MinDash />}></Route>
+		</Routes>
+	</Router>
+);
+}
 }
 
-export default Create;
+export default App;

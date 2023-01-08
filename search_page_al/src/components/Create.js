@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../index.css';
+
 class Create extends Component {
   constructor(props) {
     super(props);

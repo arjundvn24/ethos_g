@@ -122,55 +122,8 @@ button:hover{
   color: white;
 }
 
-.cards{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap:1rem;
-  /* margin-bottom:2rem;
-  margin-left: 1rem;
-  margin-right: 1rem; */
-}
-
-.cards div{
-  background-color: #162138;
-  padding : 1rem;
-  border-radius: 0.625rem;
-}
-
- .cards div p{
-  color: slategray;
-} 
-.cards div h2{
-  color: white;
-  margin-bottom: 1rem;
-}
-
-.cards div ul{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.cards div ul li:first-child{
-  color: slategray;
-}
-
-.cards div ul li a{
-  color: slategray;
-  text-decoration: underline;
-}
 
 
-.cards div ul li a:hover{
-  color: wheat;
-}
-
-@media (min-width: 768px){
-  .cards{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 @media(min-width:1024px){
   .title h1{
     font-size: 5rem ;

@@ -13,6 +13,8 @@
 
 .card.blue {
     background-color: #2f98f6;
+    height: fit-content;
+    width: fit-content;
 }
 
 .card .left {
