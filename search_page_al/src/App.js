@@ -13,6 +13,8 @@ import FAQ from "./scenes/faq";
 import About from "./scenes/about"
 import Geography from "./scenes/geography";
 import Calendar from "./scenes/calendar/calendar";
+import Sidebar from './scenes/global/Sidebar';
+import Topbar from './scenes/global/Topbar';
 class App extends Component {
 render() {
 	return (

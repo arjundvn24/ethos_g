@@ -1,10 +1,32 @@
 var keyword;
-const Article_Newspaper = require("newspaperjs").Article;
+const stripHtml = require("string-strip-html");
+const { extract,addTransformations } =require('@extractus/article-extractor')
 const express = require("express");
 const processedArticle=require('../models/processedArticle')
 const fsPromises = require('fs').promises
 const news = require('gnews');
 const Article=require('../models/Article')
+
+const transformationObj={
+  patterns: [],
+  pre: (document) => {
+    // remove all .advertise-area and its siblings from raw HTML content
+    document.getElementById('article-trial-barrier').forEach((element) => {
+      if (element.nodeName === 'div') {
+        while (element.nextSibling) {
+          element.parentNode.removeChild(element.nextSibling)
+        }
+        element.parentNode.removeChild(element)
+      }
+    })
+    return document
+  },
+  post: (document) => {
+    return document
+  }
+  
+}
+addTransformations(transformationObj)
 const postKeyword = async (req, res) => {
     keyword = req.body.keyword;
     console.log(keyword);
@@ -14,20 +36,22 @@ const postKeyword = async (req, res) => {
 const renderSearchResults=async (SERPresults)=>{
     var cachedRes=[]
     for (const rawData of SERPresults) {
-        await Article_Newspaper(
+        await extract(
             rawData.link
           )
             .then((result) => {
                 console.log('Done');
+                // let str=result.content
+                
               result=new processedArticle({
                 keyword:keyword,
                 title:result.title,
-                text:result.text,
-                topImage:result.topImage,
-                date:result.date,
+                text:stripHtml(result.content),
+                topImage:result.image,
+                date:result.published,
                 author:result.author,
                 description:result.description,
-                keywords:result.keywords
+                links:result.links
               })
               cachedRes.push(result)
             //   result.save(function(err,result){
@@ -50,8 +74,9 @@ const renderSearchResults=async (SERPresults)=>{
 const resultShow=async (req,res)=>{
   let start = performance.now();
   var SERPresults = await news.search(keyword, {n : 10});
-  SERPresults.forEach(rawData=>{
-    console.log(rawData);
+  
+  console.log(SERPresults.length);
+  // SERPresults.forEach(rawData=>{
     // rawData=new Article({
       //     keyword:keyword,
       //     title:rawData.title,
@@ -70,7 +95,7 @@ const resultShow=async (req,res)=>{
             //         console.log("Inserted with ID",result._id)
       //     }
       // })
-    })    
+    // })    
     timeTaken = performance.now() - start;
     console.log("Total time taken for Gnews Link Load : " + timeTaken/1000 + " milliseconds");
     let result=await renderSearchResults(SERPresults)

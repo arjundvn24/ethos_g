@@ -29,7 +29,7 @@ const Schema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  keywords: {
+  links: {
     type: Array,
     default: [],
   },
