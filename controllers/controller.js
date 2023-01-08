@@ -1,5 +1,5 @@
 var keyword;
-// const PythonShell = require('python-shell').PythonShell;
+const PythonShell = require('python-shell').PythonShell;
 const Article_Newspaper = require("newspaperjs").Article;
 const express = require("express");
 const processedArticle=require('../models/processedArticle')
@@ -11,7 +11,7 @@ const Article=require('../models/Article')
 const postKeyword = async (req, res) => {
     keyword = req.body.keyword;
     console.log(keyword);
-    // res.redirect('/res')
+    res.redirect('/res')
 };
 
 const renderSearchResults=async (SERPresults)=>{
@@ -80,10 +80,10 @@ const resultShow=async (req,res)=>{
     fsPromises.writeFile('temp.json', JSON.stringify(result))
   .then(() => {
     console.log("JSON SAVED");
-    // PythonShell.run('model.py', null, function (err) {
-    //   if (err) throw err;
-    //   console.log('finished');
-    // });
+    PythonShell.run('model.py', null, function (err) {
+      if (err) throw err;
+      console.log('finished');
+    });
   })
   .catch(er => {
     console.log(er);

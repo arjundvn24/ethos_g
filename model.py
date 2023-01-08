@@ -89,15 +89,6 @@ for i in range(vaders.shape[0]):
 
 
 vaders['label']=label
-fields=['Keyword','Result']
-rows=[[]]
-if(sum>0):
-  print(f"{person} = net positive")
-  rows.append([person,'P'])
-else:
-  print(f"{person} = net negative")
-  rows.append([person,'N'])
-with open('output.csv', 'w') as csvfile:
-  csvwriter = csv.writer(csvfile)
-  csvwriter.writerow(fields)
-  csvwriter.writerows(rows)
+vaders.to_csv('output.csv')
+vaders= vaders.loc[:,vaders.columns!="text"]
+vaders.to_json('file1.json', orient = 'records', compression = 'infer')

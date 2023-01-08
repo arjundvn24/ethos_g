@@ -1,0 +1,24 @@
+[
+ {
+  "index": "0",
+  "neg": "0.109",
+  "neu": "0.807",
+  "pos": "0.085",
+  "compound": "-0.9662",
+  "title": "\"Rockstar executive alleged to have \"\"groped\"\" and harassed a former designer\"",
+  "date": "2019-05-29",
+  "author": "Brad Lang",
+  "label": "Negative"
+ },
+ {
+  "index": "1",
+  "neg": "0.054",
+  "neu": "0.784",
+  "pos": "0.162",
+  "compound": "0.9985",
+  "title": "More Comic Creators Speak Out About Paltry Pay for Lucrative Characters They Crafted",
+  "date": "2021-08-11",
+  "author": "",
+  "label": "Positive"
+ }
+]
