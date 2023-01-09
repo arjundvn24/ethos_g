@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/143YtvnBbtWHPpsRN-HhUwo_34Pu37Sj0
 """
 
-!pip install transformers
 import pandas as pd
 import pandas as pd
 import numpy as np

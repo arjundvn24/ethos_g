@@ -1,5 +1,7 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
+import ts1 from '../../images/ts.png'
+import ts2 from '../../images/ts.png'
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
@@ -15,7 +17,6 @@ import ProgressCircle from "../../components/ProgressCircle";
 import ProgressCircle2 from "../../components/ProgressCircle2"
 import PieChart from "../../components/PieChart"
 import { Pie } from "react-chartjs-2";
-
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -90,7 +91,7 @@ const Dashboard = () => {
                 </Typography>
                 <Typography color={colors.grey[100]}
                 width="30rem">
-                  {transaction.label}
+                  {transaction.summary},{transaction.label},{transaction.bert_score}
                 </Typography>
               </Box>
               <Box color={colors.grey[100]}>{transaction.date}</Box>
@@ -101,7 +102,7 @@ const Dashboard = () => {
               >
                 ${transaction.cost}
               </Box> */}
-              <ProgressCircle2 progress={(transaction.compound)/5}/>
+              <ProgressCircle2 progress={(transaction.compound)/3}/>
               {/* <Box height="11vh">
                 <PieChart />
               </Box> */}
@@ -173,7 +174,7 @@ const Dashboard = () => {
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 7"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -198,11 +199,11 @@ const Dashboard = () => {
             <LineChart isDashboard={true} />
           </Box> */}
           <Box height="31vh">
-               <LineChart />
+          <LineChart />
           </Box>
         </Box>
         <Box
-          gridColumn="span 5"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
