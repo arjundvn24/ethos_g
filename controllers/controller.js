@@ -5,7 +5,9 @@ const express = require("express");
 const processedArticle=require('../models/processedArticle')
 const fsPromises = require('fs').promises
 const news = require('gnews');
-const Article=require('../models/Article')
+const Article=require('../models/Article');
+const { log } = require("console");
+const { raw } = require("body-parser");
 
 const transformationObj={
   patterns: [],
@@ -77,7 +79,8 @@ const resultShow=async (req,res)=>{
   let start = performance.now();
   var SERPresults = await news.search(keyword, {n : n});
   
-  // SERPresults.forEach(rawData=>{
+  SERPresults.forEach(rawData=>{
+    console.log(rawData)
     // rawData=new Article({
       //     keyword:keyword,
       //     title:rawData.title,
@@ -87,7 +90,7 @@ const resultShow=async (req,res)=>{
       //     contentSnippet:rawData.contentSnippet,
       //     guid:rawData.guid,
       //     isoDate:rawData.isoDate
-      // })
+      })
       // rawData.save(function(err,result){
         //     if (err){
           //         console.log(err);

@@ -1,13 +1,1 @@
-[
-    {
-        "index": 0,
-        "compound": 0.9871,
-        "neg": 0.094,
-        "neu": 0.773,
-        "pos": 0.133,
-        "title": "\u2018Vulnerable boys are drawn in\u2019: schools fear spread of Andrew Tate\u2019s misogyny",
-        "date": "2023-01-07",
-        "author": "https:\/\/www.theguardian.com\/profile\/annafazackerley",
-        "label": "Positive"
-    }
-]
+[{"index":0,"neg":0.037,"neu":0.883,"pos":0.08,"compound":0.4215,"title":"FIRST ON ABP | Faraz Malik rubbishes Devendra Fadnavis\u2019 \u2018underworld links\u2019 allegation in EXCLUSIVE interview","date":"2021-11-09","author":"@abpnews","label":"Positive"},{"index":1,"neg":0.071,"neu":0.929,"pos":0.0,"compound":-0.5574,"title":"Big wedding in Dawood Ibrahim\u2019s family; nephew ties knot","date":"2016-08-17","author":"IE Online","label":"Negative"},{"index":2,"neg":0.053,"neu":0.85,"pos":0.097,"compound":0.9826,"title":"Didn't compare Dawood to Vivekananda, Gadkari clarifies - Rediff.com News","date":"November 5","author":null,"label":"Positive"},{"index":3,"neg":0.075,"neu":0.87,"pos":0.055,"compound":-0.9414,"title":"Don Sridhar Dhanapal is the Dawood of Tamil Nadu","date":"Sep 12, 20","author":"@deccanchronicle","label":"Negative"},{"index":4,"neg":0.075,"neu":0.877,"pos":0.048,"compound":-0.9349,"title":"Shoaib Akhtar claims match-fixing was at its peak in 1996","date":"2016-10-17","author":"Ram Kumar","label":"Negative"}]
