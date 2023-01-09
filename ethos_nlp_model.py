@@ -180,3 +180,35 @@ for i in dt_lis:
   n+=1
 
 df_res.to_csv('file2.csv',index=False)
+
+!pip install pystan~=2.14
+!pip install fbprophet
+!pip install pandas-datareader
+!pip install --upgrade pandas-datareader
+!pip install --upgrade pandas
+!pip install --upgrade pandas-datareader
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot
+import pandas as pd
+from sklearn.metrics import mean_absolute_error
+from fbprophet import Prophet
+import pandas_datareader as pdr
+
+df_res.rename(columns={'date': 'ds', 'final': 'y'}, inplace=True)
+#del df_res['author']
+import numpy as np
+from sklearn.impute import SimpleImputer
+mean_imputer = SimpleImputer(missing_values=np.nan,strategy="mean")
+mean_imputer.fit_transform((df_res['y'].values).reshape(-1,1))
+
+model = Prophet()
+model.fit(df_res)
+import math
+future_dates=model.make_future_dataframe(periods=math.ceil(.2*df_res.shape[0]))
+
+prediction = model.predict(future_dates)
+model.plot(prediction)
+
+from matplotlib import pyplot as plt
+
+plt.savefig('predict.png')
