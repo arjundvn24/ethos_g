@@ -1,4 +1,4 @@
-var mongoUrl = "mongodb+srv://Hal:hCho1qKBfVlVvWIU@cluster0.aws60.mongodb.net/ethos_g";
+var mongoUrl = "mongodb+srv://<username>:<pw>@cluster0.aws60.mongodb.net/ethos_g";
 
 const mongoose = require("mongoose");
 
